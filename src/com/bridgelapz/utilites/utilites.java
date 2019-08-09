@@ -22,7 +22,7 @@ public class utilites {
 		return result;
 		}
 	
-	public boolean leapyear (int year) {
+	public static boolean leapyear (int year) {
 
         if ((year % 4 == 0) && year % 100 != 0)
         {
@@ -47,6 +47,28 @@ public class utilites {
 		if(month==2)
 			if(day<1 || day >28)
 				return false;
+		if(month==4 || month ==6 || month ==9 || month ==11)
+			if(day<1 || day>30)
+				return false; 
+		return true;
+	}	
+	
+	public boolean validateDate(int month,int day, int year){
+		if (year<1582)
+			return false;
+		if(month<1 || month>12)
+			return false ;
+		if(day<1 || day>31)
+			return false;
+		boolean leapyear=utilites.leapyear(year);
+		if(month==2) 
+			if(leapyear) {
+				if(day<1 || day > 29)
+					return false;
+		}else {
+			if(day<1 || day >28)
+					return false;
+			}
 		if(month==4 || month ==6 || month ==9 || month ==11)
 			if(day<1 || day>30)
 				return false; 
@@ -105,6 +127,37 @@ public class utilites {
 	public double minnum(double a, double b) {
 		 return Math.min(a, b);
 	}
-
+	public double windChill(int t , int v) {
+		double x= Math.pow(v, 0.16);
+		double w=35.74+(0.6215*t)+(0.4275*t-35.75)*x;
+		return w;
+		
 	}
+	public void celsiusToFahrenheit(int celsius) {
+		int f= (celsius * 9/5) + 32 ;
+		System.out.println("the fahrenheit degree is "+f+" for celcius degree "+celsius);
+	}
+
+	public void fahrenheittocelsius(int fehrenheit){
+		 int c=(fehrenheit - 32) * 5/9;
+		 System.out.println("the celsius degree is "+c+" for fehrenheit degree "+fehrenheit);
+		 }
+	
+	
+	public double LoanCalculator(int principalLoanAmount, int year, double rOI) {
+
+		double payment, r;
+		int n;
+		n = 12 * year;
+		r = (rOI / (12 * 100));
+
+		payment = (principalLoanAmount * r) / (1 - Math.pow(1 + r, -n));
+		return payment;
+		}
+
+
+	
+}
+
+
  
