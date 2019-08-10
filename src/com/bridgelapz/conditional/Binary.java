@@ -4,19 +4,16 @@ import java.util.Scanner;
 
 import com.bridgelapz.utilites.conditionalUtilities;
 
-public class Sqrt {
+public class Binary {
 
 	public static void main(String[] args) {
 		Scanner scanner= new Scanner(System.in);
 		conditionalUtilities utility= new conditionalUtilities();
-		System.out.println("please enter the non negative number ");
-		int c=scanner.nextInt();
-		if(c>0)
-		utility.sqrtNewton(c);
-		else
-		System.out.println("please enter a positive integer");	
+		int n;
+		System.out.println("Enter a number");
+		n = scanner.nextInt();
+		utility.Binarycalc(n);
 		scanner.close();
-		
-	}
+}
 
 }
