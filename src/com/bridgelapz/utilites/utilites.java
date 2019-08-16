@@ -53,7 +53,7 @@ public class utilites {
 		return true;
 	}	
 	
-	public boolean validateDate(int month,int day, int year){
+	public static boolean validateDate(int month,int day, int year){
 		if (year<1582)
 			return false;
 		if(month<1 || month>12)
@@ -154,6 +154,31 @@ public class utilites {
 		payment = (principalLoanAmount * r) / (1 - Math.pow(1 + r, -n));
 		return payment;
 		}
+
+	public int day(int month, int day, int year) {
+		int	y0 = year - (14 - month) / 12;
+	    int	x = y0 + (y0/ 4) - (y0 /100) + (y0/400);
+	    int	m0 = month + 12* ((14 - month) / 12) - 2;
+	    int	d0 = (day + x + 31* m0/12)%7;
+	    return d0;
+
+		
+	}
+
+	public int daysOfMonth(int month, int year) {
+		if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
+			return 31;
+		if (month==4||month==6||month==9||month==11)
+			return 30;
+		boolean leapyear=utilites.leapyear(year);
+		if(month==2) {
+			if(leapyear)	
+				return 29;
+			}else {
+				return 28;
+			}
+		return 0;
+	}
 
 
 	

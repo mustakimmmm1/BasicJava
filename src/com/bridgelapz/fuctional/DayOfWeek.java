@@ -15,11 +15,8 @@ public class DayOfWeek {
 	    int month=scanner.nextInt();
 	    System.out.println("please  enter year ");
 	    int year=scanner.nextInt();
-	    if(utility.validateDate(month,day,year)) {
-	    int	y0 = year - (14 - month) / 12;
-	    int	x = y0 + (y0/ 4) - (y0 /100) + (y0/400);
-	    int	m0 = month + 12* ((14 - month) / 12) - 2;
-	    int	d0 = (day + x + 31* m0/12)%7;
+	    if(utilites.validateDate(month,day,year)) {
+	    	int d0=utility.day(month,day,year);
 	    switch(d0) {
 	    case 1 : System.out.println("its monday");
 	    		  break;
